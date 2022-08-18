@@ -35,4 +35,24 @@ public class utilityValidation {
             throw new Exception("There is an empty parentheses in expression");
         }
     }
+
+    void checkForParenthesesSymmetry (String input) throws Exception {
+        if (input.contains(")") || input.contains("(")) {
+            if ((input.indexOf(")") > input.indexOf("("))) {
+                while ((input.indexOf(")") > input.indexOf("("))) {
+                    int indexOfClosing = input.indexOf(")");
+                    int indexOfOpening = input.indexOf("(");
+                    StringBuilder stringBuilder = new StringBuilder(input);
+                    stringBuilder.setCharAt(indexOfOpening, ' ');
+                    stringBuilder.setCharAt(indexOfClosing, ' ');
+                    input = stringBuilder.toString();
+                    if ((input.indexOf(")") < input.indexOf("("))) {
+                        throw new Exception("There is closing parentheses before opening one");
+                    }
+                }
+            } else {
+                throw new Exception("There is closing parentheses before opening one");
+            }
+        }
+    }
 }
