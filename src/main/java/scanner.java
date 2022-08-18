@@ -4,5 +4,4 @@ public class scanner {
 
     Scanner scanner = new Scanner(System.in);
 
-
 }

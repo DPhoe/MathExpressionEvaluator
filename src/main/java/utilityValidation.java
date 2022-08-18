@@ -40,11 +40,9 @@ public class utilityValidation {
         if (input.contains(")") || input.contains("(")) {
             if ((input.indexOf(")") > input.indexOf("("))) {
                 while ((input.indexOf(")") > input.indexOf("("))) {
-                    int indexOfClosing = input.indexOf(")");
-                    int indexOfOpening = input.indexOf("(");
                     StringBuilder stringBuilder = new StringBuilder(input);
-                    stringBuilder.setCharAt(indexOfOpening, ' ');
-                    stringBuilder.setCharAt(indexOfClosing, ' ');
+                    stringBuilder.setCharAt(input.indexOf("("), ' ');
+                    stringBuilder.setCharAt(input.indexOf(")"), ' ');
                     input = stringBuilder.toString();
                     if ((input.indexOf(")") < input.indexOf("("))) {
                         throw new Exception("There is closing parentheses before opening one");
