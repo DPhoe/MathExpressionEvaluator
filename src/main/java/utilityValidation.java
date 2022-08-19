@@ -53,4 +53,9 @@ public class utilityValidation {
             }
         }
     }
+
+    void countNumbersInString (String input) {
+        String[] massiveOfNumbers = input.split("[+*/)(-]");
+        System.out.println("Count of numbers = " + massiveOfNumbers.length);
+    }
 }

@@ -23,11 +23,16 @@ public class dbOperations {
         return null;
     }
 
-    public String buildInsertQuery(String expression, double result) {
-        return "INSERT INTO math_expres (Expression, Result) values ('" + expression +  "', " + result + ")";
+    public void executeInsertQuery(String expression, double result) {
+        String insertQuery = "INSERT INTO math_expres (Expression, Result) values ('" + expression +  "', " + result + ")";
+        try {
+            getStatement().executeUpdate(insertQuery);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
-    public void printRecordByExpressionResult (int expectedResult) {
+    public void printRecordByExpressionResult (double expectedResult) {
         String retrieveQuery = "SELECT * from math_expres WHERE Result = " + expectedResult;
         try {
             ResultSet resultSet = getStatement().executeQuery(retrieveQuery);
